@@ -1,10 +1,13 @@
 #pragma once
 
 #include "ofMain.h"
+#include "AttractorManager.h"
 
 class ofApp : public ofBaseApp{
 
 	public:
+  AttractorManager mainManager;
+  
 		void setup();
 		void update();
 		void draw();
