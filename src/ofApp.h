@@ -4,9 +4,8 @@
 #include "AttractorManager.h"
 
 class ofApp : public ofBaseApp{
-
-	public:
-  AttractorManager mainManager;
+public:
+    AttractorManager mainManager;
   
 		void setup();
 		void update();

@@ -4,8 +4,11 @@
 
 class AttractorManager {
 public:
-  Attractor attractorRef;
+  Attractor* attractorRef;
 
+  ~AttractorManager();
+
+  void init();
   void update();
   void draw();
 };

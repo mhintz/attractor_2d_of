@@ -26,8 +26,10 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		EF086F9C1A9AADEB00742C98 /* NoiseVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF086F9A1A9AADEB00742C98 /* NoiseVector.cpp */; };
 		EF3AB2621A929132005A47AD /* AttractorManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF3AB2611A929132005A47AD /* AttractorManager.cpp */; };
 		EF3AB2661A929227005A47AD /* Attractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF3AB2641A929227005A47AD /* Attractor.cpp */; };
+		EF8189131A9E8AB60011216D /* AttractorLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF8189121A9E8AB60011216D /* AttractorLibrary.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,11 +86,16 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		EF086F991A9AAB7600742C98 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		EF086F9A1A9AADEB00742C98 /* NoiseVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseVector.cpp; sourceTree = SOURCE_ROOT; };
+		EF086F9B1A9AADEB00742C98 /* NoiseVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoiseVector.h; sourceTree = SOURCE_ROOT; };
 		EF3AB2611A929132005A47AD /* AttractorManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttractorManager.cpp; sourceTree = "<group>"; };
 		EF3AB2631A929139005A47AD /* AttractorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractorManager.h; sourceTree = "<group>"; };
 		EF3AB2641A929227005A47AD /* Attractor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Attractor.cpp; sourceTree = "<group>"; };
 		EF3AB2651A929227005A47AD /* Attractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attractor.h; sourceTree = "<group>"; };
 		EF3AB2681A9296BB005A47AD /* AttractorPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractorPoint.h; sourceTree = "<group>"; };
+		EF8189111A9E8A930011216D /* AttractorLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractorLibrary.h; sourceTree = "<group>"; };
+		EF8189121A9E8AB60011216D /* AttractorLibrary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttractorLibrary.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,9 +199,14 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				EF3AB2611A929132005A47AD /* AttractorManager.cpp */,
 				EF3AB2631A929139005A47AD /* AttractorManager.h */,
+				EF8189111A9E8A930011216D /* AttractorLibrary.h */,
+				EF8189121A9E8AB60011216D /* AttractorLibrary.cpp */,
 				EF3AB2641A929227005A47AD /* Attractor.cpp */,
 				EF3AB2651A929227005A47AD /* Attractor.h */,
 				EF3AB2681A9296BB005A47AD /* AttractorPoint.h */,
+				EF086F991A9AAB7600742C98 /* Util.h */,
+				EF086F9A1A9AADEB00742C98 /* NoiseVector.cpp */,
+				EF086F9B1A9AADEB00742C98 /* NoiseVector.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -295,9 +307,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF8189131A9E8AB60011216D /* AttractorLibrary.cpp in Sources */,
 				EF3AB2621A929132005A47AD /* AttractorManager.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				EF3AB2661A929227005A47AD /* Attractor.cpp in Sources */,
+				EF086F9C1A9AADEB00742C98 /* NoiseVector.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

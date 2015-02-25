@@ -4,28 +4,30 @@
 #include "AttractorPoint.h"
 
 class Attractor {
-  std::string name;
-  ofVec3f lastPoint;
-  float magFactor = 1.f;
-  
+private:
+
+  ofVec3f lastPoint = ofVec3f(0, 0, 0);
+
   int maxIter = 6000;
-  
-  float centerX = ofGetWindowWidth() / 2.f;
-  float centerY = ofGetWindowHeight() / 2.f;
-  float adjX = 0.f;
-  float adjY = 0.f;
-  
-  std::vector<AttractorPoint> points;
-  
+
+  AttractorPoint* points;
+
   float pointRadius = 1;
-  
+
+protected:
+
+  std::string name;
+  float magFactor = 1.f;
+
+public:
+
   Attractor();
+  ~Attractor();
+
   void reset();
   void genPts();
   
-  ofVec3f getNext();
-  ofVec3f nextPt();
-  void setMinMax(ofVec3f, ofVec3f, ofVec3f);
+  ofVec3f getNext(const ofVec3f &);
   
   void update();
   void draw();
