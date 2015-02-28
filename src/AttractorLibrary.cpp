@@ -1,12 +1,22 @@
 #include "AttractorLibrary.h"
 
-PeterDeJongAttractor::PeterDeJongAttractor() {
+#include "math.h"
+
+PeterDeJongAttractor::PeterDeJongAttractor()
+: noiseA(NoiseVector(-5.f, 5.f, 0.005f)), noiseB(NoiseVector(-5.f, 5.f, 0.005f)), noiseC(NoiseVector(-5.f, 5.f, 0.005f)), noiseD(NoiseVector(-5.f, 5.f, 0.005f)) {
   name = "Peter De Jong";
   magFactor = 200.f;
-  float[2][2] rangesAandBandCandD = {{-5, 5}, {-5, 5}};
-  nVec = new NoiseVector(rangesAandBandCandD, 0.005);
 }
 
-PeterDeJongAttractor::~PeterDeJongAttractor() {
-  delete nVec;
+void PeterDeJongAttractor::update() {
+  pA = noiseA.getNext();
+  pB = noiseB.getNext();
+  pC = noiseC.getNext();
+  pD = noiseD.getNext();
+}
+
+ofVec3f PeterDeJongAttractor::getNext(ofVec3f const& prev) {
+  float x = sinf(pA * prev.y) + cosf(pB * prev.x);
+  float y = sinf(pC * prev.x) + cosf(pD * prev.y);
+  return ofVec3f(x, y, 0.f);
 }

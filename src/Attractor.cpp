@@ -34,7 +34,7 @@ void Attractor::genPts() {
 }
 
 // should be overridden
-ofVec3f getNext(const ofVec3f & curPt) {}
+ofVec3f Attractor::getNext(ofVec3f const & curPt) { return ofVec3f(0.f, 0.f, 0.f); }
 void Attractor::update() {}
 
 void Attractor::draw() {
