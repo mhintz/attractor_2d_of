@@ -8,8 +8,9 @@
 class PeterDeJongAttractor : public Attractor {
 public:
   PeterDeJongAttractor();
-  void update();
+  ~PeterDeJongAttractor();
   ofVec3f getNext(ofVec3f const &);
+  void update();
 
 private:
   float pA = 1.4;

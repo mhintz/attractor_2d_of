@@ -4,10 +4,12 @@
 
 class AttractorPoint {
 public:
-  ofVec3f pos = ofVec3f(0, 0, 0);
-  ofColor color = ofColor(0, 100, 100, 1);
-  float dist = 0;
+  ofVec3f pos;
+  ofColor color = ofColor(255, 0, 0);
+  float dist;
   
-  AttractorPoint() {};
-  AttractorPoint(ofVec3f p, ofColor c) : pos(p), color(c) {}
+  AttractorPoint()
+    : dist(0) {};
+  AttractorPoint(ofVec3f p, ofColor c)
+    : pos(p), color(c), dist(0) {}
 };

@@ -5,10 +5,7 @@
 
 class Attractor {
 private:
-
-  ofVec3f lastPoint = ofVec3f(0, 0, 0);
-
-  int maxIter = 6000;
+  int maxIter = 40000;
 
   AttractorPoint* points;
 
@@ -22,14 +19,14 @@ protected:
 public:
 
   Attractor();
-  ~Attractor();
+  virtual ~Attractor() {};
 
-  void reset();
+  // abstract base class
+  virtual ofVec3f getNext(const ofVec3f &) = 0;
+  virtual void update() = 0;
+  
+  void teardown();
   void genPts();
-  
-  ofVec3f getNext(const ofVec3f &);
-  
-  void update();
   void draw();
   void drawPt(AttractorPoint);
   std::string getParamsDisplay();

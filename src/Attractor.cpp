@@ -1,23 +1,18 @@
+#include <cmath>
+#include <iostream>
+
 #include "Attractor.h"
 #include "Util.h"
-
-#include <cmath>
 
 Attractor::Attractor() {
   points = new AttractorPoint[maxIter];
 }
 
-Attractor::~Attractor() {
+void Attractor::teardown() {
   delete[] points;
 }
 
-void Attractor::reset() {
-  lastPoint = ofVec3f(0, 0, 0);
-}
-
 void Attractor::genPts() {
-  reset();
-
   float maxDist = 0.1;
   AttractorPoint * extPt;
   for (int i = 0; i < maxIter; ++i) {
@@ -29,16 +24,27 @@ void Attractor::genPts() {
     extPt->pos.set(newPos);
   }
   for (int i = 0; i < maxIter; ++i) {
-    points[i].color = getColorFromDist(points[i].dist, maxDist);
+    points[i].color = Util::getColorFromDist(points[i].dist, maxDist);
   }
 }
 
-// should be overridden
-ofVec3f Attractor::getNext(ofVec3f const & curPt) { return ofVec3f(0.f, 0.f, 0.f); }
-void Attractor::update() {}
-
 void Attractor::draw() {
+  ofPushMatrix();
+  
+  ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
+  ofScale(20, 20);
 
+  ofMesh attractorMesh;
+  AttractorPoint * pt;
+  for (int i = 0; i < maxIter; ++i) {
+    pt = & points[i];
+    attractorMesh.addVertex(pt->pos);
+    attractorMesh.addColor(pt->color);
+  }
+  attractorMesh.setMode(OF_PRIMITIVE_POINTS);
+  attractorMesh.draw();
+
+  ofPopMatrix();
 }
 
 void Attractor::drawPt(AttractorPoint pt) {

@@ -1,7 +1,7 @@
 #include "AttractorManager.h"
 #include "AttractorLibrary.h"
 
-void AttractorManager::init() {
+AttractorManager::AttractorManager() {
   attractorRef = new PeterDeJongAttractor();
 }
 
