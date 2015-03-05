@@ -10,7 +10,9 @@ public:
   PeterDeJongAttractor();
   ~PeterDeJongAttractor();
   ofVec3f getNext(ofVec3f const &);
+  void reset();
   void update();
+  float getMagFactor() const { return magFactor; };
 
 private:
   float pA = 1.4;
@@ -21,4 +23,5 @@ private:
   NoiseVector noiseB;
   NoiseVector noiseC;
   NoiseVector noiseD;
+  float magFactor = 50.f;
 };

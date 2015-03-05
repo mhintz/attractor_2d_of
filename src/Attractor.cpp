@@ -8,18 +8,23 @@ Attractor::Attractor() {
   points = new AttractorPoint[maxIter];
 }
 
-void Attractor::teardown() {
+Attractor::~Attractor() {
   delete[] points;
 }
 
 void Attractor::genPts() {
-  float maxDist = 0.1;
+  reset();
+
   AttractorPoint * extPt;
+  const ofVec3f * lastPosition = & lastPos;
+  float maxDist = 0.1;
   for (int i = 0; i < maxIter; ++i) {
-    extPt = & points[i];
-    ofVec3f newPos = getNext(extPt->pos);
-    float dist = newPos.distance(extPt->pos);
+    ofVec3f newPos = getNext(*lastPosition);
+    float dist = newPos.distance(*lastPosition);
+    lastPosition = & newPos;
     maxDist = fmax(maxDist, dist);
+
+    extPt = & points[i];
     extPt->dist = dist;
     extPt->pos.set(newPos);
   }
@@ -28,11 +33,12 @@ void Attractor::genPts() {
   }
 }
 
-void Attractor::draw() {
+void Attractor::draw() const {
   ofPushMatrix();
   
   ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
-  ofScale(20, 20);
+  float mag = getMagFactor();
+  ofScale(mag, mag);
 
   ofMesh attractorMesh;
   AttractorPoint * pt;
@@ -45,9 +51,5 @@ void Attractor::draw() {
   attractorMesh.draw();
 
   ofPopMatrix();
-}
-
-void Attractor::drawPt(AttractorPoint pt) {
-
 }
 

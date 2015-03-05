@@ -16,14 +16,18 @@ PeterDeJongAttractor::PeterDeJongAttractor()
 }
 
 PeterDeJongAttractor::~PeterDeJongAttractor() {
-  teardown();
+
+}
+
+void PeterDeJongAttractor::reset() {
+  lastPos = ofVec3f(0.1, 0.1, 0);
 }
 
 void PeterDeJongAttractor::update() {
-//  pA = noiseA.getNext();
-//  pB = noiseB.getNext();
-//  pC = noiseC.getNext();
-//  pD = noiseD.getNext();
+  pA = noiseA.getNext();
+  pB = noiseB.getNext();
+  pC = noiseC.getNext();
+  pD = noiseD.getNext();
 }
 
 ofVec3f PeterDeJongAttractor::getNext(ofVec3f const& prev) {
