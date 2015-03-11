@@ -6,7 +6,7 @@
 class Attractor {
 private:
   AttractorPoint* points;
-  int maxIter = 80000;
+  int maxIter = 100000;
 
 protected:
   std::string name;

@@ -22,11 +22,10 @@ void Attractor::genPts() {
     ofVec3f newPos = getNext(*lastPosition);
     float dist = newPos.distance(*lastPosition);
     lastPosition = & newPos;
-    maxDist = fmax(maxDist, dist);
+    maxDist = fmaxf(maxDist, dist);
 
-    extPt = & points[i];
-    extPt->dist = dist;
-    extPt->pos.set(newPos);
+    points[i].dist = dist;
+    points[i].pos.set(newPos);
   }
   for (int i = 0; i < maxIter; ++i) {
     points[i].color = Util::getColorFromDist(points[i].dist, maxDist);
