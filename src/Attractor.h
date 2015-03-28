@@ -22,7 +22,7 @@ public:
   virtual ofVec3f getNext(const ofVec3f &) = 0;
   virtual void reset() = 0;
   virtual void update() = 0;
-  virtual float getMagFactor() const = 0;
+  virtual void applyTransform() const = 0;
   
   void genPts();
   void draw() const;

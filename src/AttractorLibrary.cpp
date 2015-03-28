@@ -35,3 +35,8 @@ ofVec3f PeterDeJongAttractor::getNext(ofVec3f const& prev) {
   float y = sinf(pC * prev.x) + cosf(pD * prev.y);
   return ofVec3f(x, y, 0.f);
 }
+
+void PeterDeJongAttractor::applyTransform() const {
+  ofTranslate(ofGetWindowWidth() * 1 / 4, ofGetWindowHeight() / 2);
+  ofScale(200.f, 200.f);
+}

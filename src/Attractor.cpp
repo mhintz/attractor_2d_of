@@ -15,17 +15,17 @@ Attractor::~Attractor() {
 void Attractor::genPts() {
   reset();
 
-  AttractorPoint * extPt;
-  const ofVec3f * lastPosition = & lastPos;
+  AttractorPoint extPt;
+  ofVec3f lastPosition = lastPos;
   float maxDist = 0.1;
   for (int i = 0; i < maxIter; ++i) {
-    ofVec3f newPos = getNext(*lastPosition);
-    float dist = newPos.distance(*lastPosition);
-    lastPosition = & newPos;
+    ofVec3f newPos = getNext(lastPosition);
+    float dist = newPos.distance(lastPosition);
+    lastPosition = newPos;
     maxDist = fmaxf(maxDist, dist);
 
     points[i].dist = dist;
-    points[i].pos.set(newPos);
+    points[i].pos = newPos;
   }
   for (int i = 0; i < maxIter; ++i) {
     points[i].color = Util::getColorFromDist(points[i].dist, maxDist);
@@ -35,9 +35,7 @@ void Attractor::genPts() {
 void Attractor::draw() const {
   ofPushMatrix();
   
-  ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
-  float mag = getMagFactor();
-  ofScale(mag, mag);
+  applyTransform();
 
   ofMesh attractorMesh;
   AttractorPoint * pt;
