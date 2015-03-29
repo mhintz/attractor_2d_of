@@ -16,4 +16,4 @@ void AttractorManager::update() {
 
 void AttractorManager::draw() {
   attractorRef->draw();
-}
+}¡

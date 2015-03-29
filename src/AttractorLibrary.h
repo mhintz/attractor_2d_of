@@ -12,7 +12,7 @@ public:
   ofVec3f getNext(ofVec3f const &);
   void reset();
   void update();
-  float getMagFactor() const { return magFactor; };
+  void const translateAndScale();
 
 private:
   float pA = 1.4;

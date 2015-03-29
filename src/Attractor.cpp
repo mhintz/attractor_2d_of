@@ -5,6 +5,7 @@
 #include "Util.h"
 
 Attractor::Attractor() {
+  lastPos = ofVec3f(0.0f, 0.0f, 0.0f);
   points = new AttractorPoint[maxIter];
 }
 
@@ -15,17 +16,17 @@ Attractor::~Attractor() {
 void Attractor::genPts() {
   reset();
 
-  AttractorPoint * extPt;
-  const ofVec3f * lastPosition = & lastPos;
+  AttractorPoint extPt;
+  ofVec3f lastPosition = lastPos;
   float maxDist = 0.1;
   for (int i = 0; i < maxIter; ++i) {
-    ofVec3f newPos = getNext(*lastPosition);
-    float dist = newPos.distance(*lastPosition);
-    lastPosition = & newPos;
+    ofVec3f newPos = getNext(lastPosition);
+    float dist = newPos.distance(lastPosition);
     maxDist = fmaxf(maxDist, dist);
+    lastPosition = newPos;
 
     points[i].dist = dist;
-    points[i].pos.set(newPos);
+    points[i].pos = newPos;
   }
   for (int i = 0; i < maxIter; ++i) {
     points[i].color = Util::getColorFromDist(points[i].dist, maxDist);
@@ -34,17 +35,13 @@ void Attractor::genPts() {
 
 void Attractor::draw() const {
   ofPushMatrix();
-  
-  ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
-  float mag = getMagFactor();
-  ofScale(mag, mag);
+
+  translateAndScale();
 
   ofMesh attractorMesh;
-  AttractorPoint * pt;
   for (int i = 0; i < maxIter; ++i) {
-    pt = & points[i];
-    attractorMesh.addVertex(pt->pos);
-    attractorMesh.addColor(pt->color);
+    attractorMesh.addVertex(points[i].pos);
+    attractorMesh.addColor(points[i].color);
   }
   attractorMesh.setMode(OF_PRIMITIVE_POINTS);
   attractorMesh.draw();
