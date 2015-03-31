@@ -36,7 +36,7 @@ ofVec3f PeterDeJongAttractor::getNext(ofVec3f const& prev) {
   return ofVec3f(x, y, 0.f);
 }
 
-void const PeterDeJongAttractor::translateAndScale() {
-  ofTranslate(ofGetWindowWidth() * 1 / 4, ofGetWindowHeight() * 1 / 4);
+void PeterDeJongAttractor::applyTransform() const {
+  ofTranslate(ofGetWindowWidth() * 1 / 4, ofGetWindowHeight() / 2);
   ofScale(magFactor, magFactor);
 }

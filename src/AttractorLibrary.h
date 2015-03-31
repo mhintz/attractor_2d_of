@@ -12,7 +12,7 @@ public:
   ofVec3f getNext(ofVec3f const &);
   void reset();
   void update();
-  void const translateAndScale();
+  void applyTransform() const;
 
 private:
   float pA = 1.4;

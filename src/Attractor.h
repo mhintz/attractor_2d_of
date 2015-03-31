@@ -10,7 +10,7 @@ private:
 
 protected:
   std::string name;
-  float magFactor = 1.0f;
+  float magFactor = 1.f;
   ofVec3f lastPos;
 
 public:
@@ -22,7 +22,7 @@ public:
   virtual ofVec3f getNext(const ofVec3f &) = 0;
   virtual void reset() = 0;
   virtual void update() = 0;
-  virtual void translateAndScale() const = 0;
+  virtual void applyTransform() const = 0;
   
   void genPts();
   void draw() const;

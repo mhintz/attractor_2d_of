@@ -36,7 +36,7 @@ void Attractor::genPts() {
 void Attractor::draw() const {
   ofPushMatrix();
 
-  translateAndScale();
+  applyTransform();
 
   ofMesh attractorMesh;
   for (int i = 0; i < maxIter; ++i) {
